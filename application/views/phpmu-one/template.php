@@ -70,7 +70,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <center>
-                      <small class='text-footer'>Copyright (c) 2015 - 2016 - <?php echo $iden['nama_website']; ?> <br>
+                      <small class='text-footer'>Copyright (c) <?php echo date('Y');?> - <?php echo $iden['nama_website']; ?> <br>
                              <?php echo $iden['alamat']; ?> - <?php echo $iden['no_telp']; ?></small>
                     </center>
                     </p>
