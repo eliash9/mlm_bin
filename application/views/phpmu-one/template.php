@@ -11,7 +11,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="phpmu.com">
-    <link rel="icon" type="image/x-icon" href="https://phpmu.com/wp-content/themes/diverso/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="<?php echo base_url(); ?>asset/images/favicon.png" />
     <title><?php echo $title; ?></title>
     <link href="<?php echo base_url(); ?>asset/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>asset/css/style.css" rel="stylesheet">

@@ -38,9 +38,11 @@
         </div>
 
 <div class="box-body chat" id="chat-box">
+    <!--
     <script src="<?php echo base_url(); ?>asset/admin/plugins/highchart/highcharts.js"></script>
     <script src="<?php echo base_url(); ?>asset/admin/plugins/highchart/modules/data.js"></script>
     <script src="<?php echo base_url(); ?>asset/admin/plugins/highchart/modules/exporting.js"></script>
+-->
     <div id="container" style="min-width: 310px; height: 413px; margin: 0 auto"></div>
 
 <table id="datatable" style='display:none'>
