@@ -24,18 +24,18 @@
                       echo "<tr><td>$no</td>
                                 <td>Level ".($row['status'])."</td>
                                 <td>".tgl_indo($ex[0])." ".$ex[1]." WIB</td>
-                                <td>Rp".rupiah($row['nominal'])."</td>
+                                <td class='text-right'>Rp".rupiah($row['nominal'])."</td>
                             </tr>";
                         $no++;
                       }
                     ?>
                     <tr class='success'>
                       <td colspan=3>Total Bonus</td>
-                      <td><b>Rp <?php echo rupiah($totbon['nominal']); ?></b></td>
+                      <td class='text-right'><b>Rp <?php echo rupiah($totbon['nominal']); ?></b></td>
                     </tr>
                     <tr class='danger'>
                       <td colspan=3>Pencairan Bonus</td>
-                      <td><b>Rp <?php echo rupiah($totpen['nominal_bayar']); ?></b></td>
+                      <td class='text-right'><b>Rp <?php echo rupiah($totpen['nominal_bayar']); ?></b></td>
                     </tr>
                     </tbody>
                   </table>
@@ -47,8 +47,9 @@
                     <tr>
                       <th width="20px">No</th>
                       <th>Username</th>
-                      <th>Bonus Sponsor</th>
+                      
                       <th>Waktu</th>
+                      <th>Bonus Sponsor</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -58,19 +59,20 @@
                     $ex = explode(' ',$row['timer']);
                     echo "<tr><td>$no</td>
                               <td>$row[username]</td>
-                              <td>Rp".rupiah($row['bonus_sponsor'])."</td>
                               <td>".tgl_indo($ex[0])." ".$ex[1]." WIB</td>
+                              <td class='text-right'>Rp".rupiah($row['bonus_sponsor'])."</td>
+                              
                           </tr>";
                       $no++;
                     }
                   ?>
                   <tr class='success'>
                     <td colspan=3>Total Bonus</td>
-                    <td><b>Rp <?php echo rupiah($totbons['nominal']); ?></b></td>
+                    <td class='text-right'><b>Rp <?php echo rupiah($totbons['nominal']); ?></b></td>
                   </tr>
                   <tr class='danger'>
                     <td colspan=3>Pencairan Bonus</td>
-                    <td><b>Rp <?php echo rupiah($totpens['nominal_bayar']); ?></b></td>
+                    <td class='text-right'><b>Rp <?php echo rupiah($totpens['nominal_bayar']); ?></b></td>
                   </tr>
                   </tbody>
                 </table>
