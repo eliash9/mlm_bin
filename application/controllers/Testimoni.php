@@ -3,7 +3,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Testimoni extends CI_Controller {
 	public function index(){
 		if (isset($_POST['submit'])){
-			$this->model_testimoni->insert_testimoni();
+			if($this->session->id_konsumen!==''){
+				$this->model_testimoni->insert_testimoni();
+			}
+			
 			$jumlah= $this->model_testimoni->hitung_testimoni()->num_rows();
 			$config['base_url'] = base_url().'testimoni/index';
 			$config['total_rows'] = $jumlah;
