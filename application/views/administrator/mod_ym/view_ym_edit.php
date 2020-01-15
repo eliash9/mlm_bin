@@ -2,7 +2,7 @@
     echo "<div class='col-md-12'>
               <div class='box box-info'>
                 <div class='box-header with-border'>
-                  <h3 class='box-title'>Edit Yahoo Messanger</h3>
+                  <h3 class='box-title'>Edit Whatsapp Support</h3>
                 </div>
               <div class='box-body'>";
               $attributes = array('class'=>'form-horizontal','role'=>'form');
@@ -12,8 +12,8 @@
                     <tbody>
                       <input type='hidden' name='id' value='$rows[id]'>
                       <tr><th width='120px' scope='row'>Nama Pengguna</th>    <td><input type='text' class='form-control' name='a' value='$rows[nama]' required></td></tr>
-                      <tr><th scope='row'>Username</th>                       <td><input type='text' class='form-control' name='b' value='$rows[username]' required></td></tr>
-                      <tr><th scope='row'>Ym Icon</th>                        <td><input type='number' class='form-control' name='c' value='$rows[ym_icon]' required></td></tr>
+                      <tr><th scope='row'>Nomor WA</th>                       <td><input type='text' class='form-control' name='b' value='$rows[username]' required></td></tr>
+                      <tr><th scope='row'>Icon</th>                        <td><input type='number' class='form-control' name='c' value='$rows[ym_icon]' required></td></tr>
                     </tbody>
                   </table>
                 </div>

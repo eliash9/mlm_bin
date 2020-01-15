@@ -1,7 +1,7 @@
             <div class="col-xs-12">  
               <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">Yahoo Messanger</h3>
+                  <h3 class="box-title">Whatsapp Support</h3>
                   <a class='pull-right btn btn-primary btn-sm' href='<?php echo base_url(); ?>administrator/tambah_ym'>Tambahkan Data</a>
                 </div><!-- /.box-header -->
                 <div class="box-body">
@@ -10,8 +10,8 @@
                       <tr>
                         <th style='width:20px'>No</th>
                         <th>Nama Pengguna</th>
-                        <th>Username</th>
-                        <th>Ym Icon</th>
+                        <th>Nomor WA</th>
+                        <th>Icon</th>
                         <th style='width:70px'>Action</th>
                       </tr>
                     </thead>

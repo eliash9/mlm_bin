@@ -13,7 +13,7 @@
   }
 </style>
         <!-- Logo -->
-        <a href="index.php" class="logo">
+        <a href="<?php base_url();?>" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini"></span>
           <!-- logo for regular state and mobile devices -->

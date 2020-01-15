@@ -7,7 +7,7 @@
                       echo "<div>
                               <center>
                                 $row[nama]<br>
-                                <a href='ymsgr:sendIM?".$row['username']."'><img src='".base_url()."asset/images/online.gif'></a>
+                                <a href='https://wa.me/".$row['username']."' target='_BLANK'><img src='".base_url()."asset/images/Whatsapp_37229.png'></a>
                               </center>
                             </div><hr>";
                     }
