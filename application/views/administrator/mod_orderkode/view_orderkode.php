@@ -20,7 +20,7 @@
                   <?php 
                     $no = 1;
                     foreach ($record->result_array() as $row){
-                    if ($row['id_paket']=='1'){ $color = 'red'; }elseif($row['id_paket']=='2'){ $color = 'orange'; }else{ $color = 'blue'; }
+                    if ($row['id_paket']=='1'){ $color = 'blue'; }elseif($row['id_paket']=='2'){ $color = 'orange'; }else{ $color = 'blue'; }
                     echo "<tr><td>$no</td>
                               <td>$row[jumlah] pin</td>
                               <td>$row[nama_lengkap] <br><span style='color:blue'>$row[alamat_email]</span></td>
@@ -29,6 +29,7 @@
                               <td><small>Bank $row[nama_bank], No rek : $row[no_rekening] <br>A/n : $row[pemilik_rekening]</small></td>
                               <td><center>
                                 <a class='btn btn-danger btn-xs' title='Delete Data' href='".base_url()."administrator/delete_orderkode/$row[id_order_kode]' onclick=\"return confirm('Apa anda yakin untuk hapus Data ini?')\"><span class='glyphicon glyphicon-remove'></span></a>
+                                <a class='btn btn-danger btn-xs' title='Cek Bukti Transfer' href='".base_url()."administrator/delete_orderkode/$row[id_order_kode]' onclick=\"return confirm('Apa anda yakin untuk hapus Data ini?')\"><span class='glyphicon glyphicon-search'></span></a>
                               </center></td>
                           </tr>";
                       $no++;
