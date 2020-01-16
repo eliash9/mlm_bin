@@ -3,22 +3,54 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Administrator extends CI_Controller {
 	function index(){
 		if (isset($_POST['submit'])){
+			$secutity_code = $this->input->post('secutity_code');
+   			$mycaptcha = $this->session->userdata('mycaptcha');
 			$username = $this->input->post('a');
 			$password = hash("sha512", md5($this->input->post('b')));
 			$cek = $this->db->query("SELECT * FROM users where username='".$this->db->escape_str($username)."' AND password='".$this->db->escape_str($password)."'");
 		    $row = $cek->row_array();
 		    $total = $cek->num_rows();
-			if ($total > 0){
+			if ($total > 0 && ($secutity_code == $mycaptcha)){
 				$this->session->set_userdata('upload_image_file_manager',true);
 				$this->session->set_userdata(array('username'=>$row['username'],
 								   'level'=>$row['level'],
                                    'id_session'=>$row['id_session']));
 				redirect('administrator/home');
 			}else{
-				$data['title'] = 'Administrator &rsaquo; Log In';
-				$this->load->view('administrator/view_login',$data);
+				redirect('administrator');
+				//$data['title'] = 'Administrator &rsaquo; Log In';
+				//$this->load->view('administrator/view_login',$data);
 			}
 		}else{
+			$this->load->helper(array('captcha','url','form'));
+			$config_captcha = array(
+			    'img_path'  => './captcha/',
+			    'img_url'  => base_url().'captcha/',
+			    'img_width'  => '200',
+			    'img_height' => 60,
+			    'border' => 0, 
+			    'font_path'     => base_url().'asset/fonts/glyphicons-halflings-regular.ttf',
+			    'word_length'   => 4,
+        		'font_size'     => 24,
+			    'expiration' => 7200,
+			    'pool'          => '0123456789',
+			    'colors'        => array(
+		                'background' => array(255, 255, 255),
+		                'border' => array(255, 255, 255),
+		                'text' => array(0, 0, 0),
+		                'grid' => array(255, 40, 40)
+		        )
+			   );
+
+						// create captcha image
+			   $cap = create_captcha($config_captcha);
+			  
+			   // store image html code in a variable
+			   $data['img'] = $cap['image'];
+			  
+			   // store the captcha word in a session
+			   $this->session->set_userdata('mycaptcha', $cap['word']);
+
 			$data['title'] = 'Administrator &rsaquo; Log In';
 			$this->load->view('administrator/view_login',$data);
 		}

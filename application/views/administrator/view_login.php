@@ -35,6 +35,13 @@
             <input type="password" class="form-control" name='b' placeholder="Password" required>
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
+           <div class="form-group has-feedback">
+
+            <?php echo $img; ?>
+            </div>
+           <div class="form-group has-feedback">
+            <input type="text" name="secutity_code" class="form-control required">
+           </div>
           <div class="row">
             <div class="col-xs-8">
               <div class="checkbox icheck">
