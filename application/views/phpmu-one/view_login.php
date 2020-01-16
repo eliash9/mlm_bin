@@ -13,6 +13,11 @@
                         <label for="inputPassword">Password</label>
                         <input type="password" name="b" class="form-control required" placeholder="Masukkan Password" autocomplete="off">
                     </div>
+                     <div class="form-group">
+
+                        <p><?php echo $img; ?></p>
+                       <p>Security: <input type="text" name="secutity_code" class="form-control required"></p>
+                    </div>
 
                     <div align="center">
                         <input name='login' type="submit" class="btn btn-primary" value="Login"> 

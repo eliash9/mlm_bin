@@ -113,27 +113,68 @@ class Auth extends CI_Controller {
 
 	public function login(){
 		if (isset($_POST['login'])){
+
+			$secutity_code = $this->input->post('secutity_code');
+   			$mycaptcha = $this->session->userdata('mycaptcha');
+   			
+
+
+
 			if ($this->input->post('a') == '' OR $this->input->post('b') == ''){
 				echo "<script>window.alert('Maaf, Inputan Tidak Boleh Kosong!!');
                                   window.location=('".base_url()."')</script>";
 			}else{
-				$username = strip_tags($this->input->post('a'));
-				$password = hash("sha512", md5(strip_tags($this->input->post('b'))));
-				$cek = $this->db->query("SELECT * FROM rb_konsumen where username='".$this->db->escape_str($username)."' AND password='".$this->db->escape_str($password)."'");
-			    $row = $cek->row_array();
-			    $total = $cek->num_rows();
-				if ($total > 0){
-					$this->session->set_userdata(array('id_konsumen'=>$row['id_konsumen'],
-									   'kode_konsumen'=>$row['kode_konsumen'], 
-									   'username'=>$row['username'],
-									   'sponsor'=>$row['sponsor']));
-					redirect('members/profile');
-				}else{
-					$data['title'] = 'Gagal Login';
-					$this->template->load('phpmu-one/template','phpmu-one/view_login_error',$data);
-				}
+				
+					$username = strip_tags($this->input->post('a'));
+					$password = hash("sha512", md5(strip_tags($this->input->post('b'))));
+					$cek = $this->db->query("SELECT * FROM rb_konsumen where username='".$this->db->escape_str($username)."' AND password='".$this->db->escape_str($password)."'");
+				    $row = $cek->row_array();
+				    $total = $cek->num_rows();
+					if ($total > 0 && ($secutity_code == $mycaptcha)){
+						$this->session->set_userdata(array('id_konsumen'=>$row['id_konsumen'],
+										   'kode_konsumen'=>$row['kode_konsumen'], 
+										   'username'=>$row['username'],
+										   'sponsor'=>$row['sponsor']));
+						redirect('members/profile');
+					}else{
+						$data['title'] = 'Gagal Login';
+						$this->template->load('phpmu-one/template','phpmu-one/view_login_error',$data);
+					}
+
+				
 			}
+
 		}else{
+			$this->load->helper(array('captcha','url','form'));
+			$config_captcha = array(
+			    'img_path'  => './captcha/',
+			    'img_url'  => base_url().'captcha/',
+			    'img_width'  => '200',
+			    'img_height' => 60,
+			    'border' => 0, 
+			    'font_path'     => base_url().'asset/fonts/glyphicons-halflings-regular.ttf',
+			    'word_length'   => 4,
+        		'font_size'     => 24,
+			    'expiration' => 7200,
+			    'pool'          => '0123456789',
+			    'colors'        => array(
+		                'background' => array(255, 255, 255),
+		                'border' => array(255, 255, 255),
+		                'text' => array(0, 0, 0),
+		                'grid' => array(255, 40, 40)
+		        )
+			   );
+
+						// create captcha image
+			   $cap = create_captcha($config_captcha);
+			  
+			   // store image html code in a variable
+			   $data['img'] = $cap['image'];
+			  
+			   // store the captcha word in a session
+			   $this->session->set_userdata('mycaptcha', $cap['word']);
+
+
 			$data['title'] = 'User Login';
 			$this->template->load('phpmu-one/template','phpmu-one/view_login',$data);
 		}
