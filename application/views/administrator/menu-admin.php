@@ -139,7 +139,7 @@
 
                 $cek=$this->model_app->umenu_akses("ym",$this->session->id_session);
                 if($cek==1 OR $this->session->level=='admin'){
-                  echo "<li><a href='".base_url()."administrator/ym'><i class='fa fa-circle-o'></i> Yahoo Messanger</a></li>";
+                  echo "<li><a href='".base_url()."administrator/ym'><i class='fa fa-circle-o'></i> WA CS</a></li>";
                 }
 
                 $cek=$this->model_app->umenu_akses("pesanmasuk",$this->session->id_session);
