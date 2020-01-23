@@ -94,12 +94,28 @@ class Auth extends CI_Controller {
 				$this->email->message($message);
 				$this->email->set_mailtype("html");
 				$this->email->send();
-				
+			/*	
 				$config['protocol'] = 'sendmail';
 				$config['mailpath'] = '/usr/sbin/sendmail';
 				$config['charset'] = 'utf-8';
 				$config['wordwrap'] = TRUE;
 				$config['mailtype'] = 'html';
+*/
+				$config = array();
+				$config['charset'] = 'utf-8';
+				$config['useragent'] = 'Codeigniter';
+				$config['protocol']= "smtp";
+				$config['mailtype']= "html";
+				$config['smtp_host']= "ssl://mail.pessonastar.com";//pengaturan smtp
+				$config['smtp_port']= "465";
+				$config['smtp_timeout']= "400";
+				$config['smtp_user']= "info@pessonastar.com"; // isi dengan email kamu
+				$config['smtp_pass']= ""; // isi dengan password kamu
+				$config['crlf']="\r\n";
+				$config['newline']="\r\n";
+				$config['wordwrap'] = TRUE;
+
+
 				$this->email->initialize($config);
 
 			$data['email'] = $this->input->post('b');
